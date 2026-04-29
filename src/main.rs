@@ -2,17 +2,21 @@
 use axum::Router;
 use tokio::net::TcpListener;
 use routes::notes::notes_routes;
+use crate::app::AppState;
 
 mod routes;
-mod state;
 mod handlers;
 mod models;
 mod db;
 mod app;
 
+mod state;
+
 #[tokio::main]
 async fn main() {
-    let state = state::AppState::new().await;
+    // 🔥 MUST BE FIRST LINE
+    dotenvy::dotenv().ok();
+    let state = AppState::new().await;
 
     let app = Router::new()
         .merge(notes_routes())

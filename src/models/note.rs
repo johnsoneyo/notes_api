@@ -2,13 +2,13 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize)]
 pub struct CreateNote {
-   pub title: String,
-   pub content: String,
+    pub title: String,
+    pub content: String,
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Debug)]
 pub struct Note {
-   pub id: u64,
-   pub title: String,
-   pub content: String,
+    pub id: i32,
+    pub title: String,
+    pub content: String,
 }
