@@ -1,0 +1,28 @@
+
+### =========================
+### CREATE NOTE (POST)
+### =========================
+POST http://localhost:3000/notes
+Content-Type: application/json
+
+{
+  "title": "First note",
+  "content": "This is my first note"
+}
+
+### =========================
+### GET ALL NOTES (GET)
+### =========================
+GET http://localhost:3000/notes
+
+
+### =========================
+### GET SINGLE NOTE (GET by id)
+### =========================
+GET http://localhost:3000/notes/1
+
+
+### =========================
+### DELETE NOTE (DELETE)
+### =========================
+DELETE http://localhost:3000/notes/1
