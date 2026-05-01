@@ -61,5 +61,5 @@ pub async fn delete(p0: &PgPool, p1: i32) {
     )
     .execute(p0)
     .await
-    .ok();  
+    .ok();
 }

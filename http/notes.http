@@ -1,8 +1,27 @@
+@baseUrl = http://localhost:3000
+@keycloakTokenUrl = http://localhost:9080/realms/caas-dev/protocol/openid-connect/token
+@clientId = test_api_client
+@clientSecret = u3ctyRHYuZbSLW38jQSzI8DkCJTun3xK
+@accessToken = paste-access-token-here
+
+### =========================
+### PUBLIC HEALTH CHECK
+### =========================
+GET {{baseUrl}}/health
+
+### =========================
+### GET ACCESS TOKEN (KEYCLOAK)
+### =========================
+POST {{keycloakTokenUrl}}
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials&client_id={{clientId}}&client_secret={{clientSecret}}
 
 ### =========================
 ### CREATE NOTE (POST)
 ### =========================
-POST http://localhost:3000/notes
+POST {{baseUrl}}/notes
+Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 
 {
@@ -13,16 +32,17 @@ Content-Type: application/json
 ### =========================
 ### GET ALL NOTES (GET)
 ### =========================
-GET http://localhost:3000/notes
-
+GET {{baseUrl}}/notes
+Authorization: Bearer {{accessToken}}
 
 ### =========================
 ### GET SINGLE NOTE (GET by id)
 ### =========================
-GET http://localhost:3000/notes/1
-
+GET {{baseUrl}}/notes/1
+Authorization: Bearer {{accessToken}}
 
 ### =========================
 ### DELETE NOTE (DELETE)
 ### =========================
-DELETE http://localhost:3000/notes/34
+DELETE {{baseUrl}}/notes/34
+Authorization: Bearer {{accessToken}}

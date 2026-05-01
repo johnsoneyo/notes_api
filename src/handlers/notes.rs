@@ -63,6 +63,11 @@ mod tests {
             http: HttpState {
                 client: reqwest::Client::new(),
             },
+            issuer: "test issuer".to_string(),
+            audience: "test audience".to_string(),
+            jwks: std::sync::Arc::new(tokio::sync::RwLock::new(crate::auth::jwks::Jwks {
+                keys: vec![],
+            })),
         }
     }
 
